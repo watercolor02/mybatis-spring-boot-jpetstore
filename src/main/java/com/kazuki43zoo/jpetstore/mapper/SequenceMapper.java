@@ -16,16 +16,12 @@
 package com.kazuki43zoo.jpetstore.mapper;
 
 import com.kazuki43zoo.jpetstore.domain.Sequence;
-import org.apache.ibatis.annotations.CacheNamespace;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
 /**
  * @author Kazuki Shimizu
  */
 @Mapper
-@CacheNamespace
 public interface SequenceMapper {
 
     Sequence getSequence(String name);
