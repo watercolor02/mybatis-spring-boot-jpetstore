@@ -28,13 +28,10 @@ import java.util.List;
 @CacheNamespace
 public interface ProductMapper {
 
-    @Select(" SELECT PRODUCTID, NAME, DESCN as description, CATEGORY as categoryId FROM PRODUCT WHERE CATEGORY = #{categoryId} ")
     List<Product> getProductListByCategory(String categoryId);
 
-    @Select(" SELECT PRODUCTID, NAME, DESCN as description, CATEGORY as categoryId FROM PRODUCT WHERE PRODUCTID = #{productId} ")
     Product getProduct(String productId);
 
-    @Select(" SELECT PRODUCTID, NAME, DESCN as description, CATEGORY as categoryId FROM PRODUCT WHERE LOWER(NAME) LIKE '%' || #{keyword} || '%' ")
     List<Product> selectProductList(String keyword);
 
 }

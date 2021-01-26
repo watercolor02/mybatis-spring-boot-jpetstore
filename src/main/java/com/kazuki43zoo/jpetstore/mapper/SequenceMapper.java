@@ -28,10 +28,8 @@ import org.apache.ibatis.annotations.Update;
 @CacheNamespace
 public interface SequenceMapper {
 
-    @Select(" SELECT NAME, NEXTID FROM SEQUENCE WHERE NAME = #{name} FOR UPDATE ")
     Sequence getSequence(String name);
 
-    @Update(" UPDATE SEQUENCE SET NEXTID = NEXTID + 1 WHERE NAME = #{name} ")
     void incrementSequence(String name);
 
 }

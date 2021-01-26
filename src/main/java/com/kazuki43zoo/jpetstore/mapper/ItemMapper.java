@@ -26,16 +26,12 @@ import java.util.List;
 @CacheNamespace
 public interface ItemMapper {
 
-    @Update("UPDATE INVENTORY SET QTY = QTY - #{increment} WHERE ITEMID = #{itemId}")
     void updateInventoryQuantity(@Param("itemId") String itemId, @Param("increment") int increment);
 
-    @Select("SELECT QTY AS value FROM INVENTORY WHERE ITEMID = #{itemId}")
     int getInventoryQuantity(String itemId);
 
-    @Select("SELECT I.ITEMID, LISTPRICE, UNITCOST, SUPPLIER AS supplierId, I.PRODUCTID AS \"product.productId\", NAME AS \"product.name\", DESCN AS \"product.description\", CATEGORY AS \"product.categoryId\", STATUS, ATTR1 AS attribute1, ATTR2 AS attribute2, ATTR3 AS attribute3, ATTR4 AS attribute4, ATTR5 AS attribute5 FROM ITEM I, PRODUCT P WHERE P.PRODUCTID = I.PRODUCTID AND I.PRODUCTID = #{productId}")
     List<Item> getItemListByProduct(String productId);
 
-    @Select("SELECT I.ITEMID, LISTPRICE, UNITCOST, SUPPLIER AS supplierId, I.PRODUCTID AS \"product.productId\", NAME AS \"product.name\", DESCN AS \"product.description\", CATEGORY AS \"product.categoryId\", STATUS, ATTR1 AS attribute1, ATTR2 AS attribute2, ATTR3 AS attribute3, ATTR4 AS attribute4, ATTR5 AS attribute5, QTY AS quantity FROM ITEM I, INVENTORY V, PRODUCT P WHERE P.PRODUCTID = I.PRODUCTID AND I.ITEMID = V.ITEMID AND I.ITEMID = #{itemId} ")
     Item getItem(String itemId);
 
 }
