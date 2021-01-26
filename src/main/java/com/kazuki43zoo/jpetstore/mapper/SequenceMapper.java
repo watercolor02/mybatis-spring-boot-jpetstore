@@ -13,39 +13,25 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-package com.kazuki43zoo.jpetstore.mapper
+package com.kazuki43zoo.jpetstore.mapper;
 
-import com.kazuki43zoo.jpetstore.domain.Sequence
-import org.apache.ibatis.annotations.CacheNamespace
-import org.apache.ibatis.annotations.Mapper
-import org.apache.ibatis.annotations.Select
-import org.apache.ibatis.annotations.Update
+import com.kazuki43zoo.jpetstore.domain.Sequence;
+import org.apache.ibatis.annotations.CacheNamespace;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 /**
  * @author Kazuki Shimizu
  */
 @Mapper
 @CacheNamespace
-interface SequenceMapper {
+public interface SequenceMapper {
 
-    @Select('''
-        SELECT
-            NAME,
-            NEXTID
-        FROM
-            SEQUENCE
-        WHERE
-            NAME = #{name}
-        FOR UPDATE
-    ''')
+    @Select(" SELECT NAME, NEXTID FROM SEQUENCE WHERE NAME = #{name} FOR UPDATE ")
     Sequence getSequence(String name);
 
-    @Update('''
-        UPDATE SEQUENCE SET
-            NEXTID = NEXTID + 1
-        WHERE
-            NAME = #{name}
-    ''')
+    @Update(" UPDATE SEQUENCE SET NEXTID = NEXTID + 1 WHERE NAME = #{name} ")
     void incrementSequence(String name);
 
 }
