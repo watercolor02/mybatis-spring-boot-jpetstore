@@ -25,9 +25,9 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
  */
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+//		http.csrf().disable();
 		http.formLogin()
 				.loginPage("/login")
 				.defaultSuccessUrl("/catalog")
@@ -39,6 +39,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.permitAll();
 		http.authorizeRequests()
 				.mvcMatchers("/my/**").authenticated()
+				.mvcMatchers("/admin/**").authenticated()
 				.anyRequest().permitAll();
 	}
 
