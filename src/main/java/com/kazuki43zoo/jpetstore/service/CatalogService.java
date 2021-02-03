@@ -56,7 +56,8 @@ public class CatalogService {
 	}
 
 	public List<Product> searchProductList(String keywords) {
-		return Stream.of(Optional.ofNullable(keywords).orElse("").split("\\s+"))
+		String keyword = "%" + keywords + "%";
+		return Stream.of(Optional.ofNullable(keyword).orElse("").split("\\s+"))
 				.distinct()
 				.flatMap(x -> productMapper.searchProductList(x).stream())
 				.distinct()
