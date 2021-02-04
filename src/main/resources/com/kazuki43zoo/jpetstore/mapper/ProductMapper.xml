@@ -43,7 +43,7 @@
       DESCN as description,
       CATEGORY as categoryId
     from PRODUCT
-    WHERE lower(name) like '%' || #{keyword} || '%'
+    WHERE lower(name) like concat('%', #{keyword}, '%')
   </select>
 
 </mapper>
