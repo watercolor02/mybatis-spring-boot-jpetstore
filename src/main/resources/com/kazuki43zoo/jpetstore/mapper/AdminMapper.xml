@@ -24,6 +24,7 @@
           phone
       FROM
           account a
+      WHERE lower(email) like concat('%', #{keyword}, '%')
   </select>
 
 </mapper>

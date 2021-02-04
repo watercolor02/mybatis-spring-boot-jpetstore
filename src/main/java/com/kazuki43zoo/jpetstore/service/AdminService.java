@@ -6,6 +6,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @RequiredArgsConstructor
 @Service
@@ -17,7 +20,11 @@ public class AdminService {
         return adminMapper.getAccountCount();
     }
 
-    public List<Account> getAccountList() {
-        return adminMapper.getAccountList();
+    public List<Account> getAccountList(String keywords) {
+        return Stream.of(Optional.ofNullable(keywords).orElse("").split("\\s+"))
+                .distinct()
+                .flatMap(x -> adminMapper.getAccountList(x).stream())
+                .distinct()
+                .collect(Collectors.toList());
     }
 }

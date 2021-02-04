@@ -3,7 +3,6 @@ package com.kazuki43zoo.jpetstore.ui.controller;
 import com.kazuki43zoo.jpetstore.domain.Account;
 import com.kazuki43zoo.jpetstore.service.AdminService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,7 +27,7 @@ public class TestController {
     @GetMapping("/data")
     public Object main() {
         int count = adminService.getAccountCount();
-        List<Account> accountList = adminService.getAccountList();
+        List<Account> accountList = adminService.getAccountList("");
         Map<String, Object> map = new HashMap<>();
         map.put("count", count);
         map.put("accountList", accountList);
