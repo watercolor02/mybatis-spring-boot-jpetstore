@@ -27,6 +27,7 @@ import com.kazuki43zoo.jpetstore.mapper.ReviewMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -47,4 +48,10 @@ public class ReviewService {
 						"Review", reviewId));
 	}
 
+    public void create(Review review) {
+		long time = new Date().getTime();
+		String timeStr = String.valueOf(time).substring(2, 10);
+		review.setReviewId(timeStr);
+		reviewMapper.createReview(review);
+    }
 }

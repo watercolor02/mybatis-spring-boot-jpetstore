@@ -43,8 +43,9 @@ public class ReviewController {
 	}
 
 	@PostMapping
-	public String write(Review review) {
+	public String create(Review review) {
 		logger.warn(review.toString());
+		reviewService.create(review);
 		return "review/review";
 	}
 

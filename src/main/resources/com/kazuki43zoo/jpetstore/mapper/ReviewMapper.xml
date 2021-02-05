@@ -18,4 +18,8 @@
     <select id="getReview" resultType="Review">
         SELECT reviewid, NAME, DESCN AS description FROM review WHERE reviewid = #{reviewId}
     </select>
+    <insert id="createReview">
+        INSERT INTO review (reviewid, name, descn) VALUES
+            (#{reviewId}, #{name}, #{description});
+    </insert>
 </mapper>

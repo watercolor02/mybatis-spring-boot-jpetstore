@@ -8,4 +8,6 @@ import org.apache.ibatis.annotations.Mapper;
 @CacheNamespace
 public interface ReviewMapper {
     Review getReview(String reviewId);
+
+    Integer createReview(Review review);
 }
