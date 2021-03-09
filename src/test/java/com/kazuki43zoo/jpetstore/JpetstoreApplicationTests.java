@@ -66,7 +66,8 @@ public class JpetstoreApplicationTests {
 		browser = Browsers.CHROME;
 		headless = true;
 		timeout = TimeUnit.SECONDS.toMillis(10);
-		baseUrl = String.format("http://localhost:%d", port);
+		//baseUrl = String.format("http://localhost:%d", port);
+		baseUrl = String.format("http://192.168.1.150:8080/", port);
 		fastSetValue = true;
 	}
 
