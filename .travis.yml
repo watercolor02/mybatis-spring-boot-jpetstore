@@ -23,14 +23,6 @@ cache:
 install: true
 
 script:
-  - |
-    if [ "$TRAVIS_BRANCH" != "master" -o "$TRAVIS_PULL_REQUEST" == "true" ]; then
-        ./mvnw -U verify jacoco:report coveralls:report -B
-    fi
-  - |
-    if [ "$TRAVIS_PULL_REQUEST" == "false" -a "$TRAVIS_BRANCH" == "master" ]; then
-        ./mvnw -U verify jacoco:report coveralls:report sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${SONAR_TOKEN} -Dsonar.organization=kazuki43zoo -Dsonar.projectKey=kazuki43zoo_mybatis-spring-boot-jpetstore -B
-    fi
   - "./gradlew clean build"
 
 before_deploy:
@@ -40,7 +32,7 @@ before_deploy:
   - cp build/libs/*.jar before-deploy/
   - cd before-deploy && zip -r before-deploy * # before-deploy로 이동후 전체 압축
   - cd ../ && mkdir -p deploy # 상위 디렉토리로 이동후 deploy 디렉토리 생성
-  - mv before-deploy/before-deploy.zip deploy/freelec-springboot2-webservice.zip # deploy로 zip파일 이동
+  - mv before-deploy/before-deploy.zip deploy/mybatis-spring-boot-jpetstore.zip # deploy로 zip파일 이동
 
 deploy:
    - provider: s3
