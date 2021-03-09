@@ -40,4 +40,4 @@ script:
 notifications:
   email:
     recipients:
-      - nugunnuguya@naver.com
+      -
