@@ -1,7 +1,7 @@
 #!/bin/bash
 
 REPOSITORY=/home/ec2-user/app/step2
-PROJECT_NAME=mybatis-spring-boot-jpetstore
+PROJECT_NAME=mybatis-spring-boot-jpetstore-2.0.0-SNAPSHOT
 
 echo "> Build 파일 복사"
 
